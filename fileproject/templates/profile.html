@@ -1,0 +1,84 @@
+{% extends 'emp_base.html' %}
+
+{% block main %}
+
+<div class="card shadow m-2">
+  <div class="card-body">
+    <h5 class="p-2 text-danger" style="border-bottom : 2px solid orange" > Profile</h5>
+  <div class="container-fluid">
+    <form method="POST" name="signup" >
+       {% csrf_token %}
+        <div class="form-row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Frist Name</label>
+              <input type="text" name="firstname" class="form-control" placeholder="enter frist name" pattern="[A-Za-z]+" value="{{employee.user.first_name}}">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastname" class="form-control" placeholder="enter last name" pattern="[A-Za-z]+" value="{{employee.user.last_name}}">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>User Name</label>
+              <input type="text" name="uname" class="form-control" placeholder="enter user name" pattern="[A-Za-z]+" value="{{employee.uname}}">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Contact</label>
+              <input type="text" name="contact" class="form-control" placeholder="Contact" value="{{employee.contact}}">
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Email ID</label>
+              <input type="email" name="emailid" class="form-control" placeholder="Email ID" value="{{employee.user.username}}">
+
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Joining Date [{{employee.joiningdate}}]</label>
+              <input type="date" name="jdate" class="form-control" >
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Gender [{{employee.gender}}]</label>
+              <select name="gender" class="form-control">
+                <option value="None"> Select Gender</option>
+                <option value="Male"> Male</option>
+                <option value="Female"> Female</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      <input type="submit" value="Submit" class="bth bth-primary">
+    </form>
+  </div>
+  </div>
+</div>
+
+{% if error == "no" %}
+<script>
+  alert('Profile Updated Successfully');
+  window.location = ('{% url 'profile' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+  alert('something went wrong , Try Again...');
+
+</script>
+{% endif %}
+
+{% endblock %}

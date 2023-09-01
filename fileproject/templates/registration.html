@@ -1,0 +1,101 @@
+{% include 'header.html' %}
+{% load static %}
+
+ <style>
+    body {
+      background-image: url('{% static 'images/1.jpg' %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .login-card {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+
+    .login-card .card-body {
+    padding: 20px;
+  }
+ </style>
+
+<script>
+  function checkpassword()
+  {
+   if(document.signup.pwd.value!=document.signup.cpwd.value)
+  {
+   alert('Password and Repeat Password Feild does not Match');
+   document.signup.cpwd.focus();
+   return false;
+  }
+   return true;
+  }
+</script>
+
+<body>
+
+<div class="card login-card">
+  <div class="card-body">
+    <h5 class="p-2 text-danger" style="border-bottom : 2px solid orange" > Create an Account</h5>
+  <div class="container-fluid">
+    <form method="POST" name="signup" onsubmit="return checkpassword()">
+       {% csrf_token %}
+        <div class="form-row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Frist Name</label>
+              <input type="text" name="firstname" class="form-control" placeholder="Enter Frist Name" pattern="[A-Za-z]+">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z]+">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>User Name</label>
+              <input type="text" name="uname" class="form-control" placeholder="Enter User Name" pattern="[A-Za-z]+" required>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Email ID</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" name="pwd" class="form-control" placeholder="Enter Password" required>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" name="cpwd" class="form-control" placeholder="Confirm Password" required>
+            </div>
+          </div>
+        </div>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+  </div>
+
+</div>
+
+{% if error == "no" %}
+<script>
+  alert('Signup Successful');
+  window.location = ('{% url 'user_login' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+  alert('something went wrong , Try Again...');
+
+</script>
+{% endif %}
+
+</body>
