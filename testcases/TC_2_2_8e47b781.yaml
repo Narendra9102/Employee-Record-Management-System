@@ -1,0 +1,13 @@
+id: 8e47b781
+name: gittest2
+steps:
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: open testerally.ai
+  step_number: null
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: wait 5 seconds
+  step_number: null
