@@ -1,0 +1,15 @@
+id: ef03246e
+name: Test case 2
+steps:
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: open google.com
+  step_number: 1
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: click gmail
+  step_number: 2
+testcase_priority: Major
+testcase_type: Functional
