@@ -1,0 +1,15 @@
+id: 711eb29a
+name: gittest1
+steps:
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: 'open crowd4test.com '
+  step_number: null
+- step_coordinates:
+    click_x: 0
+    click_y: 0
+  step_description: wait 5 seconds
+  step_number: null
+testcase_priority: Medium
+testcase_type: Unit Test
